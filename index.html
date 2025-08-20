@@ -365,54 +365,55 @@
   <h2>Apply for Your Free Session</h2>
   <div class="form-container">
     <div class="form-content">
-      <form id="applicationForm" action="https://formspree.io/f/mqalvlrd" method="POST">
-        <label><strong>You are applying as:</strong></label>
-        <div class="role-selector">
-          <div class="role-option" onclick="selectRole('parent')">Parent</div>
-          <div class="role-option" onclick="selectRole('student')">Student</div>
-        </div>
-        <input type="hidden" id="selectedRole" name="role" value="" required>
+             <form id="applicationForm" action="https://formspree.io/f/mqalvlrd" method="POST">
+          <input type="hidden" id="selectedRole" name="role" value="" required>
 
-        <div class="form-group">
-          <label>Your Name *</label>
-          <input type="text" id="yourName" required>
-        </div>
-        <div class="form-group" id="studentNameGroup" style="display: none;">
-          <label>Student's Name</label>
-          <input type="text" id="studentName">
-        </div>
-        <div class="form-group">
-          <label>Phone Number *</label>
-          <input type="text" id="phone" required>
-        </div>
-        <div class="form-group">
-          <label>Best Time to Contact</label>
-          <select id="contactTime">
-            <option value="">Any time</option>
-            <option value="morning">Morning (9AM - 12PM)</option>
-            <option value="afternoon">Afternoon (12PM - 5PM)</option>
-            <option value="evening">Evening (5PM - 9PM)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Interested in group sessions? If yes, how many students?</label>
-          <input type="number" id="numStudents" min="1" value="1">
-        </div>
-        <div class="form-group">
-          <label>Current Level</label>
-          <select id="schoolStage">
-            <option value="">Select</option>
-            <option value="school">School Student</option>
-            <option value="uni">University Student (CS/CE/BIS)</option>
-            <option value="other">Self-Learner / Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>General Area (e.g., Maadi, Nasr City)</label>
-          <input type="text" id="area">
-        </div>
-        <button type="submit" class="btn">Submit Application</button>
-      </form>
+          <label><strong>You are applying as:</strong></label>
+          <div class="role-selector">
+            <div class="role-option" onclick="selectRole('parent')">Parent</div>
+            <div class="role-option" onclick="selectRole('student')">Student</div>
+          </div>
+
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="yourName" name="your_name" required>
+          </div>
+          <div class="form-group" id="studentNameGroup" style="display: none;">
+            <label>Student's Name</label>
+            <input type="text" id="studentName" name="student_name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="text" id="phone" name="phone_number" required>
+          </div>
+          <div class="form-group">
+            <label>Best Time to Contact</label>
+            <select id="contactTime" name="best_contact_time">
+              <option value="">Any time</option>
+              <option value="morning">Morning (9AM - 12PM)</option>
+              <option value="afternoon">Afternoon (12PM - 5PM)</option>
+              <option value="evening">Evening (5PM - 9PM)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Interested in group sessions? If yes, how many students?</label>
+            <input type="number" id="numStudents" name="number_of_students" min="1" value="1">
+          </div>
+          <div class="form-group">
+            <label>Current Level</label>
+            <select id="schoolStage" name="current_level">
+              <option value="">Select</option>
+              <option value="school">School Student</option>
+              <option value="uni">University Student (CS/ENG/BIS)</option>
+              <option value="other">Self-Learner / Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>General Area (e.g., Maadi, Nasr City)</label>
+            <input type="text" id="area" name="general_area">
+          </div>
+          <button type="submit" class="btn">Submit Application</button>
+        </form>
       <p id="confirmation" style="color:green; font-weight:bold; margin-top: 20px;"></p>
     </div>
   </div>
@@ -477,5 +478,6 @@ function selectRole(role) {
 </body>
 
 </html>
+
 
 
