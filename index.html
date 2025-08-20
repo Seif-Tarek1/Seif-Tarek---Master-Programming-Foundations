@@ -517,6 +517,43 @@ function checkAvailability() {
   }
 }
 
+// NEW: Handle form submission without redirecting
+document.getElementById('applicationForm').addEventListener('submit', async function(e) {
+  // Prevent the default form submission and redirect
+  e.preventDefault();
+  
+  // Show confirmation message immediately
+  document.getElementById('confirmation').innerText = "✅ Thank you for your application! I will call you shortly to schedule your free first session.";
+  
+  // Create FormData object from the form
+  const formData = new FormData(this);
+  
+  try {
+    // Send the data to Formspree in the background
+    const response = await fetch(this.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (response.ok) {
+      // Success! Data was sent to Formspree
+      // Reset the form after a short delay
+      setTimeout(() => {
+        this.reset();
+        document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('selected'));
+      }, 2000);
+    } else {
+      // Show error message if Formspree returns an error
+      document.getElementById('confirmation').innerText = "❌ There was an issue submitting your form. Please try again or contact me directly.";
+    }
+  } catch (error) {
+    // Show error message if network request fails
+    document.getElementById('confirmation').innerText = "❌ Network error. Please check your connection and try again.";
+  }
+});
 
 // Run on page load
 window.onload = function() {
@@ -525,6 +562,7 @@ window.onload = function() {
 </script>
 </body>
 </html>
+
 
 
 
