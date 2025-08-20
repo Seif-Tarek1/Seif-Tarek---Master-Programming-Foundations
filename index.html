@@ -516,14 +516,6 @@ function checkAvailability() {
     closedDiv.style.display = 'block';
   }
 }
-
-// Handle form submission
-document.getElementById('applicationForm').addEventListener('submit', function(e){
-  document.getElementById('confirmation').innerText = "✅ Thank you for your application! I will call you shortly to schedule your free first session.";
-  setTimeout(() => {
-    this.reset();
-    document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('selected'));
-  }, 1000);
 });
 
 // Run on page load
@@ -533,5 +525,6 @@ window.onload = function() {
 </script>
 </body>
 </html>
+
 
 
