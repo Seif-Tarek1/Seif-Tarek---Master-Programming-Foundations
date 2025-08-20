@@ -16,10 +16,7 @@
     background-image: radial-gradient(#ccc 1px, transparent 1px);
     background-size: 20px 20px;
   }
-  /* NEW HEADER STYLING FOR HERO IMAGE */
-   /* NEW HEADER STYLING - Text at top, lighter overlay */
-  /* NEW HEADER STYLING - Dark at top, clear at bottom */
-  /* NEW HEADER STYLING - Dark at top, bright & clear at bottom */
+
   header {
     background: linear-gradient(to bottom, 
                 rgba(0, 0, 0, 0.7) 0%, 
@@ -38,7 +35,7 @@
     padding-top: 120px;
   }
   header img {
-    display: none; /* We hide the old image */
+    display: none; 
   }
   header h1 {
     font-size: 3.5em;
@@ -51,7 +48,7 @@
     max-width: 800px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   }
-  /* Remove the old circular image style */
+
  
   .btn {
     background: #fff;
@@ -65,10 +62,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
   }
-   /* Center only the submit button */
+
   #applicationForm .btn {
     display: block;
-    margin: 0 auto; /* This is the key to centering the button */
+    margin: 0 auto;
   }
   .btn:hover {
     transform: translateY(-3px);
@@ -89,7 +86,6 @@
     font-size: 2.2em;
   }
   
-  /* Session Methodology Banner */
   .method-banner {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     color: white;
@@ -100,8 +96,7 @@
     max-width: 800px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   }
-  
-  /* Program Concepts blocks */
+
   .concepts {
     display: flex;
     flex-wrap: wrap;
@@ -139,7 +134,7 @@
     border-radius: 8px;
   }
   
-  /* Why me colorful list */
+
   .why-me {
     display: flex;
     flex-wrap: wrap;
@@ -284,7 +279,6 @@
 <body>
 
 <header>
-  <!-- The image is now set as the CSS background -->
   <h1>Seif Tarek</h1>
   <p>Master Programming Foundations with Personalized 1-on-1 Tutoring</p>
   <button class="btn" onclick="document.getElementById('apply').scrollIntoView({behavior: 'smooth'})">Start Your Free Session</button>
@@ -366,6 +360,7 @@
   <div class="form-container">
     <div class="form-content">
              <form id="applicationForm" action="https://formspree.io/f/mqalvlrd" method="POST">
+               <input type="hidden" name="_next" value="https://seif-tarek1.github.io#apply">
           <input type="hidden" id="selectedRole" name="role" value="" required>
 
           <label><strong>You are applying as:</strong></label>
@@ -473,11 +468,20 @@ function selectRole(role) {
     studentGroup.style.display = 'none';
   }
 }
+
+document.getElementById('applicationForm').addEventListener('submit', function(e){
+  document.getElementById('confirmation').innerText = "✅ Thank you for your application! I will call you shortly to schedule your free first session."; 
+  setTimeout(() => {
+    this.reset();
+    document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('selected'));
+  }, 1000);
+});
 </script>
 
 </body>
 
 </html>
+
 
 
 
