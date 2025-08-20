@@ -274,6 +274,19 @@
     font-weight: 600;
     color: #2c3e50;
   }
+    /* Application Closed Styling */
+  #application-closed {
+    text-align: center;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border: 2px solid #4ca1af;
+    display: none; /* Hidden by default */
+  }
+  #application-closed h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
 </style>
 </head>
 <body>
@@ -357,7 +370,24 @@
 
 <section id="apply">
   <h2>Apply for Your Free Session</h2>
-  <div class="form-container">
+   <div id="application-closed">
+    <h3>🎓 Fully Booked - Join the Waitlist 🎓</h3>
+    <p>Thank you for your incredible interest! I'm currently at full capacity to ensure the highest quality of personal attention for my current students.</p>
+    <p><strong>Join the waitlist below, and I'll contact you immediately when a spot opens up!</strong></p>
+    <form id="waitlistForm" action="https://formspree.io/f/your-waitlist-form-id" method="POST">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name" required style="max-width: 300px; margin: 10px auto;">
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Your Email" required style="max-width: 300px; margin: 10px auto;">
+      </div>
+      <div class="form-group">
+        <input type="tel" name="phone" placeholder="Your WhatsApp Number" style="max-width: 300px; margin: 10px auto;">
+      </div>
+      <button type="submit" class="btn">Join the Waitlist</button>
+    </form>
+  </div>
+  <div class="form-container" id="application-open">
     <div class="form-content">
              <form id="applicationForm" action="https://formspree.io/f/mgvzjlkd" method="POST">
                <input type="hidden" name="_next" value="https://seif-tarek1.github.io#apply">
@@ -469,21 +499,38 @@ function selectRole(role) {
   }
 }
 
+// CONTROL: Set this to false when you're fully booked
+const isAcceptingStudents = false; // ← CHANGE TO false WHEN FULL
+
+// Show the right form based on availability
+function checkAvailability() {
+  const openDiv = document.getElementById('application-open');
+  const closedDiv = document.getElementById('application-closed');
+
+  if (isAcceptingStudents) {
+    openDiv.style.display = 'flex';
+    closedDiv.style.display = 'none';
+  } else {
+    openDiv.style.display = 'none';
+    closedDiv.style.display = 'block';
+  }
+}
+
+// Handle form submission
 document.getElementById('applicationForm').addEventListener('submit', function(e){
-  document.getElementById('confirmation').innerText = "✅ Thank you for your application! I will contact you shortly to schedule your free first session."; 
+  document.getElementById('confirmation').innerText = "✅ Thank you for your application! I will call you shortly to schedule your free first session.";
   setTimeout(() => {
     this.reset();
     document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('selected'));
   }, 1000);
 });
+
+// Run on page load
+window.onload = function() {
+  checkAvailability();
+};
 </script>
 
 </body>
 
 </html>
-
-
-
-
-
-
