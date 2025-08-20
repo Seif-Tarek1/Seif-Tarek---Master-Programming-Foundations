@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seif Tarek - Master Programming Foundations</title>
+<!-- Link to Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f8f9fa;
+    background-image: radial-gradient(#ccc 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  /* NEW HEADER STYLING FOR HERO IMAGE */
+   /* NEW HEADER STYLING - Text at top, lighter overlay */
+  /* NEW HEADER STYLING - Dark at top, clear at bottom */
+  /* NEW HEADER STYLING - Dark at top, bright & clear at bottom */
+  header {
+    background: linear-gradient(to bottom, 
+                rgba(0, 0, 0, 0.7) 0%, 
+                rgba(0, 0, 0, 0.3) 40%, 
+                rgba(0, 0, 0, 0.0) 70%), 
+                url('./pic me.jpg') no-repeat center center / cover;
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 120px;
+  }
+  header img {
+    display: none; /* We hide the old image */
+  }
+  header h1 {
+    font-size: 3.5em;
+    margin: 0 0 15px 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  }
+  header p {
+    font-size: 1.5em;
+    margin: 0 0 30px 0;
+    max-width: 800px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  /* Remove the old circular image style */
+ 
+  .btn {
+    background: #fff;
+    color: #4ca1af;
+    padding: 16px 35px;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+   /* Center only the submit button */
+  #applicationForm .btn {
+    display: block;
+    margin: 0 auto; /* This is the key to centering the button */
+  }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  }
+  
+  section {
+    padding: 70px 20px;
+    max-width: 1100px;
+    margin: auto;
+    font-size: 1.05em;
+    line-height: 1.7;
+  }
+  h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2em;
+  }
+  
+  /* Session Methodology Banner */
+  .method-banner {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: -20px auto 40px auto;
+    max-width: 800px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Program Concepts blocks */
+  .concepts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+  }
+  .concept {
+    background: #f0f8ff;
+    flex: 1 1 280px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .concept:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  }
+  .concept h3 {
+    margin-top: 0;
+    color: #2575fc;
+  }
+  .subsection {
+    margin-top: 12px;
+    font-size: 0.95em;
+    padding-left: 10px;
+    border-left: 3px solid #2575fc;
+  }
+  .concept-note {
+    text-align: center;
+    font-style: italic;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #e8f4fc;
+    border-radius: 8px;
+  }
+  
+  /* Why me colorful list */
+  .why-me {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+  }
+  .why {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    flex: 1 1 250px;
+    padding: 25px 20px;
+    border-radius: 12px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  .why:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Form Styling */
+  .form-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    background: #f0f8ff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  .form-img {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+  }
+  .form-img img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  .form-content {
+    flex: 2;
+    min-width: 300px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  input, select {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+  }
+  /* Role Selector Blocks */
+  .role-selector {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .role-option {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .role-option.selected {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border-color: #2575fc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  footer {
+    background: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+  }
+  
+  /* Contact Section - Text Display */
+  .contact-info {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.1em;
+  }
+  .contact-detail {
+    margin: 10px 0;
+  }
+  /* Contact Icons */
+  .contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border-radius: 50%;
+    font-size: 28px;
+    text-decoration: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+  .contact-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .highlight {
+    background-color: #fff9c4;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  .credential {
+    font-weight: 600;
+    color: #2575fc;
+  }
+  .bold-text {
+    font-weight: 600;
+    color: #2c3e50;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <!-- The image is now set as the CSS background -->
+  <h1>Seif Tarek</h1>
+  <p>Master Programming Foundations with Personalized 1-on-1 Tutoring</p>
+  <button class="btn" onclick="document.getElementById('apply').scrollIntoView({behavior: 'smooth'})">Start Your Free Session</button>
+</header>
+
+<section id="about">
+  <h2>About Me & My Method</h2>
+  <p>Hi, I'm Seif, a <strong>Computer Engineering student at Cairo University</strong> with a strong passion for teaching. I've moved beyond just theory—I've <strong>built real-world projects</strong> and gained practical experience collaborating with<strong> major tech companies</strong>. I know exactly what fundamentals are needed to succeed, both in <strong>top technical universities</strong> and in a <strong>professional career</strong>.</p>
+  <p>I see many students feel lost and overwhelmed when starting their programming journey. My goal is to change that. I offer <span class="bold-text">private tutoring</span> to make learning simple, effective, and genuinely enjoyable. I teach the way I wished I was taught: with patience, practical examples, and a focus on <span class="bold-text">true understanding</span>. Whether you're a <strong>high school student wanting a head start before university</strong>, a current university student struggling with the basics, a parent looking to <span class="bold-text">build a strong technological foundation for your child</span>, or a young programmer starting your early career, I provide the structured, hands-on guidance to set you on the right path and build confidence from the ground up.</p>
+</section>
+
+<section id="concepts">
+  <h2>What You Will Master</h2>
+  
+  <div class="method-banner">
+    <p><i class="fas fa-chalkboard-teacher"></i> Every session blends <strong>clear theory</strong>, <strong>exercises we do together</strong>, and <strong>practical homework</strong>, culminating in real-life mini-projects that solidify your understanding.</p>
+  </div>
+  
+  <div class="concepts">
+    <div class="concept">
+      <h3>Programming Basics</h3>
+      <div class="subsection">Data Types, Variables, Operators</div>
+      <div class="subsection">Input/Output, Clean Coding Practices</div>
+    </div>
+    <div class="concept">
+      <h3>Control Flow & Logic</h3>
+      <div class="subsection">Conditionals (if/else, switch)</div>
+      <div class="subsection">Loops (for, while, do-while)</div>
+    </div>
+    <div class="concept">
+      <h3>Functions</h3>
+      <div class="subsection">Void & Return Functions</div>
+      <div class="subsection">Pass by Reference / Value</div>
+    </div>
+    <div class="concept">
+      <h3>Data Handling</h3>
+      <div class="subsection">Static & Dynamic Arrays</div>
+      <div class="subsection">Mini Projects: Grades, Shopping Lists</div>
+    </div>
+    <div class="concept">
+      <h3>Memory Management</h3>
+      <div class="subsection">Basics of Pointers</div>
+      <div class="subsection">Global, Local, Static, Const Variables</div>
+    </div>
+    <div class="concept">
+      <h3>Real-World Practice</h3>
+      <div class="subsection">Build real-life mini projects</div>
+      <div class="subsection">Learn to debug & solve issues</div>
+    </div>
+  </div>
+  
+  <p class="concept-note">
+    <strong>Note:</strong> This is Level 1, focusing on building an unshakable foundation. Advanced topics like <strong>Object-Oriented Programming (OOP)</strong> and <strong>Data Structures</strong> are available as a continuation for students who want to master the complete picture.
+  </p>
+</section>
+
+<section id="why">
+  <h2>Why Choose Private Tutoring?</h2>
+  <div class="why-me">
+    <div class="why">Personal Guidance & Instant Feedback</div>
+    <div class="why">Hands-on Real Projects</div>
+    <div class="why">Structured & Progressive Learning</div>
+    <div class="why">Strong Foundations for School & University</div>
+    <div class="why">Fun & Engaging Approach</div>
+    <div class="why">Focused 1-on-1 Attention (No Large Online Courses!)</div>
+  </div>
+</section>
+
+<section id="pricing">
+  <h2>Pricing & Packages</h2>
+  <p><strong>Private 1-on-1 Session:</strong> <span class="highlight">300 EGP</span> per session.</p>
+  <p><strong>Monthly Bundle (4 sessions):</strong> <span class="highlight">1000 EGP</span> (a 200 EGP saving!).</p>
+  <p><i>Pricing may vary for small group sessions. Please inquire for details.</i></p>
+  <p><strong>Best of all: Your first session is completely <span class="highlight">FREE</span> and obligation-free!</strong> Limited seats available to ensure personal attention for every student.</p>
+</section>
+
+<section id="apply">
+  <h2>Apply for Your Free Session</h2>
+  <div class="form-container">
+    <div class="form-content">
+      <form id="applicationForm" action="https://formspree.io/f/mqalvlrd" method="POST">
+        <label><strong>You are applying as:</strong></label>
+        <div class="role-selector">
+          <div class="role-option" onclick="selectRole('parent')">Parent</div>
+          <div class="role-option" onclick="selectRole('student')">Student</div>
+        </div>
+        <input type="hidden" id="selectedRole" name="role" value="" required>
+
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" id="yourName" required>
+        </div>
+        <div class="form-group" id="studentNameGroup" style="display: none;">
+          <label>Student's Name</label>
+          <input type="text" id="studentName">
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="text" id="phone" required>
+        </div>
+        <div class="form-group">
+          <label>Best Time to Contact</label>
+          <select id="contactTime">
+            <option value="">Any time</option>
+            <option value="morning">Morning (9AM - 12PM)</option>
+            <option value="afternoon">Afternoon (12PM - 5PM)</option>
+            <option value="evening">Evening (5PM - 9PM)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Interested in group sessions? If yes, how many students?</label>
+          <input type="number" id="numStudents" min="1" value="1">
+        </div>
+        <div class="form-group">
+          <label>Current Level</label>
+          <select id="schoolStage">
+            <option value="">Select</option>
+            <option value="school">School Student</option>
+            <option value="uni">University Student (CS/CE/BIS)</option>
+            <option value="other">Self-Learner / Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>General Area (e.g., Maadi, Nasr City)</label>
+          <input type="text" id="area">
+        </div>
+        <button type="submit" class="btn">Submit Application</button>
+      </form>
+      <p id="confirmation" style="color:green; font-weight:bold; margin-top: 20px;"></p>
+    </div>
+  </div>
+</section>
+
+<section id="clean">
+  <h2>My Teaching Philosophy</h2>
+  <p>My philosophy is simple: <span class="bold-text">clarity and practice lead to mastery</span>. From day one, you will learn to write clean, logical, and efficient code. I focus on teaching you how to <span class="bold-text">think like an engineer</span>—breaking down problems, structuring solutions, and debugging effectively. This isn't just about passing a course; it's about <span class="bold-text">building an unshakable foundation</span> for a future in technology, all while making the journey engaging and rewarding.</p>
+</section>
+
+<section id="contact">
+  <h2>Get In Touch</h2>
+  <p>Prefer to reach out directly? Here are my contact details:</p>
+  
+  <div class="contact-info">
+    <p class="contact-detail"><i class="fas fa-phone"></i> <strong>Phone/WhatsApp:</strong> +20 111 507 1773</p>
+    <p class="contact-detail"><i class="fas fa-envelope"></i> <strong>Email:</strong> seifmarzouk40@gmail.com</p>
+    <p class="contact-detail"><i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> Seif Tarek</p>
+  </div>
+  
+  <p>Or, click an icon below to start a conversation:</p>
+  <div class="contact-icons">
+    <a href="https://wa.me/201115071773" target="_blank" class="contact-icon" title="Message me on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+201115071773" class="contact-icon" title="Call me">
+      <i class="fas fa-phone"></i>
+    </a>
+    <a href="mailto:seifmarzouk40@gmail.com" class="contact-icon" title="Send an email">
+      <i class="fas fa-envelope"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/seif-tarek-05b6a1353" target="_blank" class="contact-icon" title="Connect on LinkedIn">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Seif Tarek – Personal Programming Tutoring. All Rights Reserved.</p>
+</footer>
+
+<script>
+// Function to handle role selection with blocks
+function selectRole(role) {
+  document.getElementById('selectedRole').value = role;
+  
+  // Style the selected block
+  const options = document.querySelectorAll('.role-option');
+  options.forEach(opt => opt.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  
+  // Toggle student name field
+  const studentGroup = document.getElementById('studentNameGroup');
+  if (role === 'parent') {
+    studentGroup.style.display = 'block';
+  } else {
+    studentGroup.style.display = 'none';
+  }
+}
+
+// Handle form submission
+document.getElementById('applicationForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('confirmation').innerText = "✅ Thank you for your application! I will call you shortly to schedule your free first session.";
+  this.reset();
+  document.querySelectorAll('.role-option').forEach(opt => opt.classList.remove('selected'));
+});
+</script>
+
+</body>
+</html>
